@@ -39,10 +39,10 @@ class VideoMultiImagesRequest(BaseModel):
     duration: float
     fps: int
     count: int
-    
-@app.get("/")
+
+@app.get("/", include_in_schema=False)
 def index():
-    return {"status": "ok"}
+    return {"message": "Hello from FastAPI!"}
 
 @app.post("/generate-multi-images-video-base64/")
 async def create_multi_images_video_base64(req: VideoMultiImagesRequest):
