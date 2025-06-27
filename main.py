@@ -39,6 +39,10 @@ class VideoMultiImagesRequest(BaseModel):
     duration: float
     fps: int
     count: int
+    
+@app.get("/")
+def index():
+    return {"status": "ok"}
 
 @app.post("/generate-multi-images-video-base64/")
 async def create_multi_images_video_base64(req: VideoMultiImagesRequest):
