@@ -7,10 +7,7 @@ USER root
 RUN apk update && apk add --no-cache python3 py3-pip
 
 # ติดตั้งไลบรารี Python ที่ต้องการ
-RUN pip3 install --break-system-packages moviepy==1.0.3 fastapi
-
-# สร้างโฟลเดอร์สำหรับ script
-RUN mkdir -p /python_scripts
+RUN pip3 install --break-system-packages moviepy==1.0.3 fastapi Pillow 
 
 # 🔄 กลับมาเป็น user node (เพื่อความปลอดภัย/ไม่ให้ n8n รันด้วย root)
 USER node

@@ -39,7 +39,7 @@ def generate_multi_images_video_base64(images_bytes_list, width, height, duratio
 
             # ✅ แนวตั้ง: เริ่มจาก "บน-กลาง" (30%) → ล่างลึกขึ้น (80%)
             dy_start = int((h - height) * 0.3)
-            dy_end   = int((h - height) * 0.8)
+            dy_end   = int((h - height) * 0.6)
             dy = round(dy_start + progress * (dy_end - dy_start))
 
             frame = full_img[dy:dy + height, dx:dx + width]
@@ -53,12 +53,12 @@ def generate_multi_images_video_base64(images_bytes_list, width, height, duratio
             max_dy = h - height
 
             dx = round(progress * max_dx * 1.0)
-            dy = round(progress * max_dy * 0.1)  # ขยับลงด้านล่าง 10% ของระยะที่เหลือ
+            dy = round(progress * max_dy * 0.15)  # ขยับลงด้านล่าง 10% ของระยะที่เหลือ
 
             frame = full_img[dy:dy + height, dx:dx + width]
             return frame
 
-        # 3.เลื่อนจากล่างขึ้นบนช้า ๆ (Slow Tilt Up)
+        # 3.เลื่อนจากล่างขึ้นบนช้า ๆ (Slow Pan Up)
         def make_frame_3(t):
             progress = t / per_clip_duration
             h, w, _ = full_img.shape
@@ -66,7 +66,7 @@ def generate_multi_images_video_base64(images_bytes_list, width, height, duratio
             max_dx = w - width
 
             # เคลื่อนขึ้นแบบช้าลง (จากล่างขึ้นบน)
-            dy = round((1 - progress) * max_dy * 0.4)
+            dy = round((1 - progress) * max_dy * 0.25)
 
             # เคลื่อนขวานิดหน่อย
             dx = round((w - width) // 2 + progress * max_dx * 0.05)

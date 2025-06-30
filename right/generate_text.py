@@ -13,7 +13,7 @@ def generate_text_right(text, font_bin, video_bytes, text_color, canvas_width, c
 
     font_bytes = BytesIO(base64.b64decode(font_bin))
 
-    margin = 20
+    margin = 25
     max_text_width = (canvas_width // 2) - (margin * 2)
     
     def wrap_text(text, font, draw_context, max_width):
@@ -33,7 +33,7 @@ def generate_text_right(text, font_bin, video_bytes, text_color, canvas_width, c
             lines.append(current_line)
         return lines
     
-    font_size = 55
+    font_size = 50
     min_font_size = 15
 
     resolved_color = (255, 255, 255)
